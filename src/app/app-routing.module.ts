@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'homepage',
-    pathMatch: 'full',
+    pathMatch: 'prefix',
   },
   {
     path: 'homepage',

@@ -1,1 +1,6 @@
-<p>Topic list</p>
+<div class="topic-list-container">
+  <app-homepage-page-card
+    *ngFor="let topic of topicList"
+    [topic]="topic"
+  ></app-homepage-page-card>
+</div>

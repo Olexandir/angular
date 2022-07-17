@@ -1,1 +1,32 @@
 //! BIG BLOCKS TO STYLE THEM INDIVIDUALLY
+
+.app {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 3rem 1fr 2rem;
+
+  // &__header {
+  //
+  // }
+
+  &__body {
+    background: $whitesmoke;
+    padding: 1rem;
+  }
+
+  // &__footer {
+  // }
+}
+
+.app-header {
+  @include flexBox($jc: flex-start);
+  height: 100%;
+  box-shadow: 0 0 4px 4px rgb(0 0 0 / 3%);
+  padding: 0 1rem;
+}
+
+.app-footer {
+  @include flexBox;
+  height: 100%;
+  padding: 0 1rem;
+}

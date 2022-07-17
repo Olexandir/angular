@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HomepageTopicListComponent } from 'src/app/components/homepage-topic-list/homepage-topic-list.component';
 
@@ -5,6 +6,6 @@ import { HomepageTopicListComponent } from 'src/app/components/homepage-topic-li
   standalone: true,
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  imports: [HomepageTopicListComponent],
+  imports: [CommonModule, HomepageTopicListComponent],
 })
 export class HomepageComponent {}
