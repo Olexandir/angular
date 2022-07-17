@@ -18,6 +18,7 @@ const routes: Routes = [
     path: 'angular-routing',
     title: 'Routing',
     component: AngularRoutingComponent,
+    data: { animation: 'isRight' },
   },
 ];
 
