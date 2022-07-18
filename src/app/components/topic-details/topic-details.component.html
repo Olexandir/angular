@@ -1,1 +1,16 @@
-<div class="topic-details"></div>
+<div class="topic-details">
+  <input
+    type="text"
+    #input
+    (input)="saveInputChange(input.value)"
+    (blur)="onBlur(input)"
+  />
+  <p #p>{{ savedInfo }}</p>
+
+  <button
+    class="app-button topic-details__button"
+    [routerLink]="['', { outlets: { details: null } }]"
+  >
+    Close
+  </button>
+</div>

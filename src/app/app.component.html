@@ -1,11 +1,18 @@
 <div class="app">
   <app-header></app-header>
   <main [@routeAnimations]="prepareRoute(outlet)" class="app__body">
-    <div class="sidenav">
+    <div class="sidenav" [ngClass]="{ 'gray-part': isDetailsRoute }">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
     <div class="details">
-      <router-outlet name="details"></router-outlet>
+      <router-outlet
+        #detailsRoute
+        (activate)="onDetailsRouteActivated()"
+        (deactivate)="onDetailsRouteDeactivated()"
+        (attach)="onRouterAttach($event)"
+        (detach)="onRouterDetach($event)"
+        name="details"
+      ></router-outlet>
     </div>
   </main>
   <app-footer></app-footer>

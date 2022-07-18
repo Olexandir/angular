@@ -26,6 +26,9 @@ const routes: Routes = [
     path: 'topic/:id',
     component: TopicDetailsComponent,
     outlet: 'details',
+    data: {
+      saveComponentState: true,
+    },
   },
   {
     path: '**',
