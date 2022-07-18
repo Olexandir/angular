@@ -10,24 +10,32 @@ import {
 
 export const fader = trigger('routeAnimations', [
   transition('* <=> *', [
-    query(':enter, :leave', [
-      style({
-        position: ':absolute',
-        left: 0,
-        width: '100%',
-        opacity: 0,
-        transform: 'scale(0) translateY(100%)',
-      }),
-    ]),
-    query(':enter', [
-      animate(
-        '600ms ease',
+    query(
+      ':enter, :leave',
+      [
         style({
+          position: ':absolute',
+          left: 0,
+          width: '100%',
           opacity: 0,
-          transform: 'scale(1) transitionY(0)',
+          transform: 'scale(0) translateY(100%)',
         }),
-      ),
-    ]),
+      ],
+      { optional: true },
+    ),
+    query(
+      ':enter',
+      [
+        animate(
+          '600ms ease',
+          style({
+            opacity: 0,
+            transform: 'scale(1) transitionY(0)',
+          }),
+        ),
+      ],
+      { optional: true },
+    ),
   ]),
 ]);
 
@@ -40,41 +48,53 @@ export const slider = trigger('routeAnimations', [
 
 export const stepper = trigger('routeAnimations', [
   transition('* <=> *', [
-    query(':enter, :leave', [
-      style({
-        positiona: 'absolute',
-        left: 0,
-        width: '100%',
-      }),
-    ]),
+    query(
+      ':enter, :leave',
+      [
+        style({
+          positiona: 'absolute',
+          left: 0,
+          width: '100%',
+        }),
+      ],
+      { optional: true },
+    ),
     group([
-      query(':enter', [
-        animate(
-          '2000ms ease',
-          keyframes([
-            style({ transform: 'scale(0) translateX(100%)', offset: 0 }),
-            style({ transform: 'scale(0.5) translateX(25%)', offset: 0.3 }),
-            style({ transform: 'scale(1) translateX(0%)', offset: 1 }),
-          ]),
-        ),
-      ]),
-      query(':leave', [
-        animate(
-          '2000ms ease',
-          keyframes([
-            style({ transform: 'scale(1)', offset: 0 }),
-            style({
-              transform: 'scale(0.5) translateX(-25%) rotate(0)',
-              offset: 0.35,
-            }),
-            style({
-              opacity: 0,
-              transform: 'scale(6) translateX(-50%) rotate(-180deg)',
-              offset: 1,
-            }),
-          ]),
-        ),
-      ]),
+      query(
+        ':enter',
+        [
+          animate(
+            '2000ms ease',
+            keyframes([
+              style({ transform: 'scale(0) translateX(100%)', offset: 0 }),
+              style({ transform: 'scale(0.5) translateX(25%)', offset: 0.3 }),
+              style({ transform: 'scale(1) translateX(0%)', offset: 1 }),
+            ]),
+          ),
+        ],
+        { optional: true },
+      ),
+      query(
+        ':leave',
+        [
+          animate(
+            '2000ms ease',
+            keyframes([
+              style({ transform: 'scale(1)', offset: 0 }),
+              style({
+                transform: 'scale(0.5) translateX(-25%) rotate(0)',
+                offset: 0.35,
+              }),
+              style({
+                opacity: 0,
+                transform: 'scale(6) translateX(-50%) rotate(-180deg)',
+                offset: 1,
+              }),
+            ]),
+          ),
+        ],
+        { optional: true },
+      ),
     ]),
   ]),
 ]);
@@ -108,14 +128,18 @@ function slideTo(direction: string) {
         [animate('600ms ease-in', style({ [direction]: '100%' }))],
         optional,
       ),
-      query(':enter', [
-        animate(
-          '600ms ease-in',
-          style({
-            [direction]: '0%',
-          }),
-        ),
-      ]),
+      query(
+        ':enter',
+        [
+          animate(
+            '600ms ease-in',
+            style({
+              [direction]: '0%',
+            }),
+          ),
+        ],
+        optional,
+      ),
     ]),
   ];
 }
@@ -135,22 +159,34 @@ function translateTo({ x = 100, y = 0, rotate = 0 }) {
       ],
       optional,
     ),
-    query(':enter', [
-      style({ transform: `translate(${x}%, ${y}) rotate(${rotate}deg)` }),
-    ]),
+    query(
+      ':enter',
+      [style({ transform: `translate(${x}%, ${y}) rotate(${rotate}deg)` })],
+      optional,
+    ),
     group([
-      query(':leave', [
-        animate(
-          '600ms ease-out',
-          style({ transform: `translate(${x}%, ${y}%) rotate(${rotate}deg)` }),
-        ),
-      ]),
-      query(':enter', [
-        animate(
-          '600ms ease-out',
-          style({ transform: 'translate(0, 0) rotate(0)' }),
-        ),
-      ]),
+      query(
+        ':leave',
+        [
+          animate(
+            '600ms ease-out',
+            style({
+              transform: `translate(${x}%, ${y}%) rotate(${rotate}deg)`,
+            }),
+          ),
+        ],
+        optional,
+      ),
+      query(
+        ':enter',
+        [
+          animate(
+            '600ms ease-out',
+            style({ transform: 'translate(0, 0) rotate(0)' }),
+          ),
+        ],
+        optional,
+      ),
     ]),
   ];
 }

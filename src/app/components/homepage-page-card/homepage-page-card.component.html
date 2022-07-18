@@ -1,4 +1,10 @@
-<div class="page-card">
+<div class="page-card" [ngClass]="{ 'disabled-block': !topic.openned }">
   <span class="page-card__title"> {{ topic.cardTitle }}</span>
-  <button (click)="openPage()">Go</button>
+  <button
+    [routerLink]="['', { outlets: { details: ['topic', topic.cardId] } }]"
+    routerLinkActive="router-link-active"
+    [disabled]="!topic.openned"
+  >
+    Open page
+  </button>
 </div>

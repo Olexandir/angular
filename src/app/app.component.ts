@@ -1,6 +1,7 @@
-import { fader, stepper, slider } from './route-animations';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import { fader, stepper, slider } from './route-animations';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,7 @@ import { RouterOutlet } from '@angular/router';
   animations: [slider],
 })
 export class AppComponent {
-  title = 'angular';
-
-  prepareRoute(outlet: RouterOutlet) {
+  public prepareRoute(outlet: RouterOutlet): RouterOutlet {
     const { activatedRouteData } = outlet;
     return outlet && activatedRouteData && activatedRouteData['animation'];
   }

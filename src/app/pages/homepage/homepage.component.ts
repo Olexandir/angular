@@ -1,5 +1,6 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { HomepageTopicListComponent } from 'src/app/components/homepage-topic-list/homepage-topic-list.component';
 
 @Component({

@@ -1,7 +1,12 @@
 <div class="app">
   <app-header></app-header>
   <main [@routeAnimations]="prepareRoute(outlet)" class="app__body">
-    <router-outlet #outlet="outlet"></router-outlet>
+    <div class="sidenav">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+    <div class="details">
+      <router-outlet name="details"></router-outlet>
+    </div>
   </main>
   <app-footer></app-footer>
 </div>

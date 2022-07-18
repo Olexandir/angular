@@ -3,8 +3,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  selector: 'app-header',
-  templateUrl: './app-header.component.html',
+  templateUrl: './page-not-found.component.html',
   imports: [RouterModule],
 })
-export class AppHeaderComponent {}
+export class PageNotFoundComponent {}

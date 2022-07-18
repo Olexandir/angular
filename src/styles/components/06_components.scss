@@ -5,27 +5,25 @@
   display: grid;
   grid-template-rows: 3rem 1fr 2rem;
 
-  // &__header {
-  //
-  // }
-
   &__body {
     background: rgb(225, 225, 225);
     padding: 1rem;
   }
-
-  // &__footer {
-  // }
 }
 
 main {
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  height: 100%;
+  gap: 1rem;
 }
 
 .app-header {
   @include flexBox($jc: flex-start);
   height: 100%;
   padding: 0 1rem;
+  gap: 1rem;
 }
 
 .app-footer {
@@ -44,36 +42,28 @@ main {
 }
 
 .topic-list-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
   width: 100%;
   height: fit-content;
   gap: 1rem;
 }
 
 .page-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 300px;
-  height: 175px;
+  @include flexBox($fd: column);
+  height: fit-content;
   background: $red;
   border-radius: 15px;
   box-shadow: 0 0 10px 0 rgb(175, 175, 175);
   overflow: hidden;
 
   &__title {
+    @include flexBox;
     position: relative;
     margin: auto 0;
     width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
+    height: fit-content;
+    padding: 0.5rem 0;
     color: $whitesmoke;
     font-family: $manrope-font;
     font-size: 24px;
@@ -87,4 +77,16 @@ main {
     font-size: 16px;
     font-weight: bold;
   }
+}
+
+.disabled-block {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.topic-details {
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgb(85, 85, 85);
+  border-radius: 20px;
 }
