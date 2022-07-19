@@ -6,7 +6,7 @@ import {
 } from '@angular/router';
 
 @Injectable()
-export class CustomRouteReuseStrategyService extends RouteReuseStrategy {
+export class CustomRouteReuseStrategyService implements RouteReuseStrategy {
   // Создание уникальной коллекциию, где ключ является урлом,
   // а значение - ссылкой на компонент, с сохраненный стэйтом
   private newMap = new Map<string, DetachedRouteHandle>();
