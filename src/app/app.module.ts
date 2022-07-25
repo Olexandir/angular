@@ -1,4 +1,3 @@
-import { HTTPService } from './service/hhtp.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -8,6 +7,12 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { UserListPageComponent } from './pages/user-list-page/user-list-page.component';
 
+import { UserAPIService } from './service/hhtp.service';
+
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsModule } from '@ngxs/store';
+import { UserState } from './store/user/user.state';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,8 +21,13 @@ import { UserListPageComponent } from './pages/user-list-page/user-list-page.com
     HttpClientModule,
     HomepageComponent,
     UserListPageComponent,
+
+    NgxsModule.forRoot([UserState], {
+      developmentMode: true,
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot({ name: 'userState' }),
   ],
-  providers: [HTTPService],
+  providers: [UserAPIService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
