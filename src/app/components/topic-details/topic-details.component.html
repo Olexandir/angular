@@ -7,6 +7,17 @@
   />
   <p #p>{{ savedInfo }}</p>
 
+  <div class="user-details">
+    <label>
+      {{ this.info.name }}
+      <input type="text" />
+    </label>
+    <label>
+      {{ this.info.email }}
+      <input type="email" />
+    </label>
+  </div>
+
   <button
     class="app-button topic-details__button"
     [routerLink]="['', { outlets: { details: null } }]"

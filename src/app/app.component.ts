@@ -6,7 +6,7 @@ import { fader, stepper, slider } from './route-animations';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  animations: [slider],
+  animations: [stepper],
 })
 export class AppComponent {
   @ViewChild('outlet', { static: false }) public outlet!: RouterOutlet;
@@ -29,11 +29,9 @@ export class AppComponent {
 
   public onDetailsRouteActivated(): void {
     this.isDetailsRoute = true;
-    console.log(this.isDetailsRoute);
   }
 
   public onDetailsRouteDeactivated(): void {
     this.isDetailsRoute = false;
-    console.log(this.isDetailsRoute);
   }
 }

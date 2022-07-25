@@ -24,9 +24,16 @@ import { CustomRouteReuseStrategyService } from './service/route-reuse-strategy.
     HomepageModule,
   ],
   providers: [
-    CustomErrorHandler,
-    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategyService },
-    { provide: ErrorHandler, useClass: CustomErrorHandler },
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomRouteReuseStrategyService,
+      // multi: true,
+    },
+    {
+      provide: ErrorHandler,
+      useClass: CustomErrorHandler,
+      //  multi: true
+    },
   ],
   bootstrap: [AppComponent],
 })

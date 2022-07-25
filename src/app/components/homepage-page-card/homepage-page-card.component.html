@@ -1,10 +1,14 @@
 <div class="page-card" [ngClass]="{ 'disabled-block': !topic.openned }">
   <span class="page-card__title"> {{ topic.cardTitle }}</span>
-  <button
-    [routerLink]="['', { outlets: { details: ['topic', topic.cardId] } }]"
-    routerLinkActive="router-link-active"
-    [disabled]="!topic.openned"
-  >
+  <button [disabled]="!topic.openned" (click)="openPage()">
+    <!-- [routerLink]="['', { outlets: { details: ['topic', topic.cardId] } }]"
+    routerLinkActive="router-link-active" -->
+
     Open page
   </button>
+
+  <form [formGroup]="form">
+    <label>En <input formControlName="lang" type="radio" value="en" /></label>
+    <label>Ru <input formControlName="lang" type="radio" value="ru" /></label>
+  </form>
 </div>
