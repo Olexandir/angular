@@ -18,7 +18,7 @@ export class UserState {
   constructor(private userAPIService: UserAPIService) {}
 
   @Action(GetUserList)
-  getUserList(state: StateContext<UserList>) {
+  private getUserList(state: StateContext<UserList>) {
     const currentState = state.getState();
 
     return this.userAPIService.getUserList().pipe(

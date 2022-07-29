@@ -15,31 +15,15 @@ import { GetUserList } from './store/user/user.actions';
 export class AppComponent {
   title = 'angular';
 
-  // @Select(UserState) userList$!: Observable<UserList>;
+  ngOnInit(): void {
+    const arr = [0, 0, 0, 0];
+    const fn = <T>(item: T) => !!item;
 
-  // private ngUnsubscribe = new Subject<void>();
+    const res = this.calc(arr, fn);
+    console.log(res);
+  }
 
-  // constructor(private userStore: Store) {}
-
-  // ngOnInit(): void {
-  //   this.getUserList();
-
-  //   this.userList$.pipe(takeUntil(this.ngUnsubscribe)).subscribe((data) => {
-  //     console.log(this.userStore);
-  //   });
-  // }
-
-  // ngOnDestroy() {
-  //   console.log('aaaa');
-
-  //   this.ngUnsubscribe.next();
-  //   this.ngUnsubscribe.complete();
-  // }
-
-  // private getUserList(): void {
-  //   this.userStore
-  //     .dispatch(new GetUserList())
-  //     .pipe(takeUntil(this.ngUnsubscribe))
-  //     .subscribe();
-  // }
+  calc(arr: number[], fn: <T>(item: T) => boolean = (item) => !!item): boolean {
+    return arr.some(fn);
+  }
 }
