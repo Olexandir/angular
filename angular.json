@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "angular-routing"
+  "defaultProject": "angular-routing",
+  "cli": {
+    "analytics": false
+  }
 }
