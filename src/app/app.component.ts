@@ -27,10 +27,10 @@ export class AppComponent {
   ];
 
   ngOnInit() {
-    // const subFn1 = <T>(i: T): boolean => !!i;
+    const subFn1 = <T>(i: T): boolean => !!i;
     const subFn2 = <T>(i: T): void => console.log(i);
 
-    const res = this.task10(2)(3);
+    const res = this.task10(2)(3)(10);
 
     console.log(res);
   }
